@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-uuid-extension
+      author: clevertec
+      changes:
+        - sql: CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+  - include:
+      file: classpath:db/changelog-v0.0/v0.0/01-create-tables-test.yaml
+
+  - changeSet:
+      id: insert-data
+      author: clevertec
+      changes:
+        - sqlFile:
+            path: db/sql/02-insert-test-data.sql
+            encoding: UTF-8
+            endDelimiter: ";"
+            splitStatements: false
+            stripComments: true

@@ -1,0 +1,71 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-test
+      author: clevertec
+      preConditions:
+        - not:
+            tableExists:
+              tableName: news
+      changes:
+        - createTable:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  defaultValueComputed: uuid_generate_v4()
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: text
+                  type: TEXT
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITHOUT TIME ZONE
+
+  - changeSet:
+      id: 2-test
+      author: clevertec
+      preConditions:
+        - not:
+            tableExists:
+              tableName: comment
+      changes:
+        - createTable:
+            tableName: comment
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  defaultValueComputed: uuid_generate_v4()
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: news_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: text
+                  type: TEXT
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITHOUT TIME ZONE
+        - addForeignKeyConstraint:
+            baseTableName: comment
+            baseColumnNames: news_id
+            referencedTableName: news
+            referencedColumnNames: id
+            constraintName: fk_comment_news

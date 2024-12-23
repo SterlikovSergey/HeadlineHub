@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: headlineHub
+
+  config:
+    import: classpath:application-secret.yml
+
+  profiles:
+    active: prod

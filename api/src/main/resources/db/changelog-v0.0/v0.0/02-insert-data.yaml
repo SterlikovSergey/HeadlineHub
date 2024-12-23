@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-news
+      author: clevertec
+      changes:
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: id, valueComputed: random_uuid() }
+              - column: { name: title, value: "News ${row.rowNumber}" }
+              - column: { name: text, value: "This is a sample news ${row.rowNumber}" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+  - changeSet:
+      id: insert-comments
+      author: clevertec
+      changes:
+        - insert:
+            tableName: comment
+            columns:
+              - column: { name: id, valueComputed: random_uuid() }
+              - column: { name: news_id, value: (SELECT id FROM news LIMIT 1 OFFSET ${row.rowNumber % 20}) }
+              - column: { name: username, value: "user${row.rowNumber}" }
+              - column: { name: text, value: "Comment for news ${row.rowNumber}" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }

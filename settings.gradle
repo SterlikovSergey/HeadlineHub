@@ -1,0 +1,2 @@
+rootProject.name = 'HeadlineHub'
+include 'api', 'core'

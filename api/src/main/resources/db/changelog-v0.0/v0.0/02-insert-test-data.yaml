@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-test-news
+      author: clevertec
+      changes:
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: id, valueComputed: random_uuid() }
+              - column: { name: title, value: "Test News" }
+              - column: { name: text, value: "This is a test news" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+  - changeSet:
+      id: insert-test-comments
+      author: clevertec
+      changes:
+        - insert:
+            tableName: comment
+            columns:
+              - column: { name: id, valueComputed: random_uuid() }
+              - column: { name: news_id, value: (SELECT id FROM news LIMIT 1) }
+              - column: { name: username, value: "test_user" }
+              - column: { name: text, value: "Test comment ${row.rowNumber}" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }

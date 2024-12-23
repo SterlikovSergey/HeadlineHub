@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.0'
+    id 'io.spring.dependency-management'
+}
+
+dependencies {
+    // Spring Boot Web (для REST-контроллеров)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Feign Client (для взаимодействия с другими микросервисами)
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
+    // Swagger/OpenAPI 3.0 (для документирования API)
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+    // Spring Boot JPA (для работы с репозиториями)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+    // PostgreSQL Driver (для подключения к базе данных)
+    implementation 'org.postgresql:postgresql:42.6.0'
+
+    // MapStruct (для маппинга DTO и сущностей)
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    // Зависимость на core
+    implementation project(':core')
+
+    // Lombok (для сокращения шаблонного кода)
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    // Liquibase (для миграций базы данных)
+    implementation 'org.liquibase:liquibase-core'
+
+    // Тестирование
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Логирование методов при помощи стартера
+    implementation 'ru.clevertec:logger:0.0.4-SNAPSHOT'
+
+}
+
+bootJar {
+    mainClass = 'ru.clevertec.HeadlineHubApplication'
+}
