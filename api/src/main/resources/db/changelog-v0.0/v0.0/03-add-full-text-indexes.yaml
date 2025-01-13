@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: clevertec
+      changes:
+        - sql:
+            sql: |
+              CREATE INDEX idx_news_title_text ON news USING gin(to_tsvector('english', title || ' ' || text));
+        - sql:
+            sql: |
+              CREATE INDEX idx_comment_text ON comment USING gin(to_tsvector('english', text));

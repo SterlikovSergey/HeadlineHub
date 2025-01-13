@@ -8,6 +8,9 @@ databaseChangeLog:
   - include:
       file: classpath:db/changelog-v0.0/v0.0/01-create-tables.yaml
 
+  - include:
+      file: classpath:db/changelog-v0.0/v0.0/03-add-full-text-indexes.yaml
+
   - changeSet:
       id: insert-data
       author: clevertec

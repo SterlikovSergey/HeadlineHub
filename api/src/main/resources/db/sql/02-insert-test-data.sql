@@ -5,7 +5,7 @@ FOR i IN 1..20 LOOP
         INSERT INTO news (id, title, text, created_at)
         VALUES (
             uuid_generate_v4(),
-            CONCAT('Test News ', i),
+            CONCAT('Test NewsEntity ', i),
             CONCAT('This is the test content of news ', i),
             NOW()
         );

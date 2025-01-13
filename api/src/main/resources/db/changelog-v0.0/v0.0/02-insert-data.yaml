@@ -7,8 +7,8 @@ databaseChangeLog:
             tableName: news
             columns:
               - column: { name: id, valueComputed: random_uuid() }
-              - column: { name: title, value: "News ${row.rowNumber}" }
-              - column: { name: text, value: "This is a sample news ${row.rowNumber}" }
+              - column: { name: title, value: "NewsEntity ${row.rowNumber}" }
+              - column: { name: text, value: "This is a sample NewsEntity ${row.rowNumber}" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
 
   - changeSet:
