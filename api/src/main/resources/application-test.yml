@@ -13,14 +13,14 @@ spring:
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
       hibernate:
         default_schema: ${POSTGRES_SCHEMA}
-    open-in-view: false
+    open-in-view: false # Возможные значения: true, false
 
   liquibase:
     change-log: classpath:db/changelog-v0.0/changelog-test-master.yaml
-    enabled: true
+    enabled: true # Возможные значения: true, false
 
   cache:
-    type: simple
+    type: simple # Возможные значения: simple, jcache, ehcache
 
 app:
   cache:
@@ -29,11 +29,11 @@ app:
 
 logging:
   level:
-    org.springframework: INFO
-    ru.clevertec: INFO
-    org.springframework.beans.factory.support.DefaultListableBeanFactory: INFO
-    org.springframework.boot.context.properties: INFO
-    org.hibernate: INFO
+    org.springframework: INFO # Возможные значения: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+    ru.clevertec: INFO # Возможные значения: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+    org.springframework.beans.factory.support.DefaultListableBeanFactory: INFO # Возможные значения: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+    org.springframework.boot.context.properties: INFO # Возможные значения: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+    org.hibernate: INFO # Возможные значения: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
 
 server:
   port: 8088

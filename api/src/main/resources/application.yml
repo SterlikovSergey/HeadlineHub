@@ -6,4 +6,4 @@ spring:
     import: classpath:application-secret.yml
 
   profiles:
-    active: prod
+    active: prod # Возможные значения: prod, test
